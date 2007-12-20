@@ -1,0 +1,5 @@
+== 0.1.0 / 2007-11-16
+
+* 1 major enhancement
+  * First Release
+

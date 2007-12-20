@@ -1,0 +1,5 @@
+
+This mail is send by WhoToWho. So
+
+#{who} who is the name of receiv email. So he need made something to #{towho}
+the name of other person.

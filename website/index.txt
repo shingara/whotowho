@@ -1,0 +1,90 @@
+h1. Whotowho
+
+h1. &#x2192; 'How assign one person to another'
+
+
+h2. What
+
+WhoToWho is a simple script to define a name randomly in list of name. And
+send this name by email. With WhoToWho you can define several thing:
+
+ * Subject of Mail
+ * Format of Mail with 2 parameters (who and towho)
+ * The configuration of smtp connection
+ * Add options for SSL if your smtp connection is a Gmail account
+
+h2. History
+
+WhoToWho made in first for my friend group. For Christmas, we decide to
+group us and we offer one present for only one other personne. The price is
+define in first for this present.
+
+Before WhoToWho, we made a group before the Christmas night and we made a
+random choice of who must offer to who. The choice is made with little paper
+in hat.
+
+Now we are in different place and we can't see every week. So, like we have
+all an email, I created WhoToWho. So I can't know who must be offer to who and
+it's a total random.
+
+Yes, WhoToWho is useless. But What is really usefull?
+
+h2. Installing
+
+<pre syntax="ruby">sudo gem install whotowho</pre>
+
+
+h2. Example of command
+
+<pre syntax="ruby">
+ruby whotowho -m mail-example.txt -s 'a good subject' -f ../data.yaml -c conf.yaml -g
+</pre>
+
+h3. File data example
+
+This file define the list of name and email. The format of this file is YAML. It's the serialization of an Array of an Array in Ruby. A example of format is :
+
+<pre syntax="ruby">
+- - name
+  - email
+- - name2
+  - email2
+- - name3
+  - email3
+</pre>
+
+h3. File of mail configuration
+
+It's the same of actionmailer. But I have add a configuration of from. You need had :from:
+
+<pre syntax="ruby">
+:address: Allows you to use a remote mail server. Just change it from its default "localhost" setting.
+:port: On the off chance that your mail server doesn‘t run on port 25, you can change it.
+:domain: If you need to specify a HELO domain, you can do it here.
+:user_name: If your mail server requires authentication, set the username in this setting.
+:password: If your mail server requires authentication, set the password in this setting.
+:authentication: If your mail server requires authentication, you need to specify the authentication type here. This is a symbol and one of :plain, :login, :cram_md5
+:from: Define the email who send all mail in from header
+</pre>
+
+h3. File of mail content
+
+This file is a simple text file. You have two patterns who change before the send.
+
+ * #{who} : it's the name of person who receiv the mail
+ * #{towho} : the name of person assign to personne who receiv this mail
+
+h2. How to submit patches
+
+Read the "8 steps for fixing other people's code":http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/ and for section "8b: Submit patch to Google Groups":http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/#8b-google-groups, use the Google Group above.
+
+The trunk repository is <code>http://whotowho.rubyforge.org/svn/trunk</code> for anonymous access.
+
+h2. License
+
+This code is free to use under the terms of the MIT license. 
+
+h2. Contact
+
+Comments are welcome. Send an email to "Cyril Mougel":mailto:cyril.mougel@gmail.com email
+

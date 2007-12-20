@@ -1,0 +1,9 @@
+- - un
+  - email_un
+- - deux
+  - email_deux
+- - trois
+  - email_trois
+- - quatre
+  - email_quatre
+  - :exclude: deux

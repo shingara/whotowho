@@ -1,0 +1,7 @@
+:address: Allows you to use a remote mail server. Just change it from its default "localhost" setting.
+:port: On the off chance that your mail server doesn‘t run on port 25, you can change it.
+:domain: If you need to specify a HELO domain, you can do it here.
+:user_name: If your mail server requires authentication, set the username in this setting.
+:password: If your mail server requires authentication, set the password in this setting.
+:authentication: If your mail server requires authentication, you need to specify the authentication type here. This is a symbol and one of :plain, :login, :cram_md5
+:from: Define the email who send all mail in from header

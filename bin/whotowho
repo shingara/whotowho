@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+$:.unshift File.dirname(__FILE__) + '/../lib'
+require 'rubygems'
+require 'whotowho'
+
+args = WhoToWho::ParseArgs.new 
+args.parse ARGV, $0
+whotowho = WhoToWho::WhoToWho.new(args)
+whotowho.send whotowho.random
