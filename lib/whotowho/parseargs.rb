@@ -55,12 +55,6 @@ module WhoToWho
     end
 
 
-    # Send a random Link objet from list_link save into
-    def put_random
-      rand_index = rand(@list_link.size)
-      @list_link.slice!(rand_index)
-    end
-
     def insert(link)
       @list_link << link
     end

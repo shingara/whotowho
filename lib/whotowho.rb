@@ -39,6 +39,7 @@ module WhoToWho
         tmp = @args.put_random
       end
       concord_list << [first, tmp]
+      puts "concords : #{first} <= #{tmp}"
 
       list_mail = []
 
@@ -58,6 +59,7 @@ module WhoToWho
           end
         end
         concord_list << [tmp, tmp2]
+        puts "concords : #{tmp} <= #{tmp2}"
         tmp = tmp2
       end
      
@@ -66,6 +68,7 @@ module WhoToWho
       end
 
       concord_list << [tmp, first]
+      puts "concords : #{tmp} <= #{first"
 
       if refresh
         @args.refresh
