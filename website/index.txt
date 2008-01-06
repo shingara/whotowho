@@ -7,52 +7,52 @@ h2. What
 WhoToWho is a simple script to find a random name in a list and
 send this name by email. With WhoToWho you can define several things:
 
- * Mail subject
- * Mail format with 2 parameters (who and towho)
+ * Email subject
+ * Email contents with 2 parameters (who and towho)
  * SMTP configuration
  * SSL option if your SMTP connection is a Gmail account
 
 h2. History
 
 WhoToWho was first made for my group of friends. For Christmas, we decided to
-group up and offer one present for one and only one other person. The present's price is
-defined at the stort.
+group up and each of us offer one present to one other person. The present's price is
+defined at the start.
 
-Before WhoToWho, we made a group before the Christmas eve and made the
-random choice of who must offer to who with a little paper
-in hat.
+Before WhoToWho, we made a group before Christmas Eve and made the
+random choice with a little paper in hat.
 
 Now we live in different places and we can&#8217;t see each other every week. So, as we all
-have an email account, I created WhoToWho. This way nobody knows who must offer to who and the choice is totally random.
+have an email account, I created WhoToWho. This way nobody knows who must give
+a present to whom and the choice is totally random.
 
 Yes, WhoToWho is useless. But what is really useful anyway?
 
 h2. Features
 
- * Randomize a list and choose one person for another
- * Send an email to each person to know to whom he or she is assigned
+ * Randomly pick a person for every person
+ * Send an email to every person to know to whom he or she is assigned
  * Define the subject and the contents of the email with 2 parameters (who and to who)
- * who and to who
- * You may exclude one or several persons for another. With this
-   feature, one person can't have another defined person.
+ * You may exclude one or several persons for anybody in the list. With this
+   feature, one can't randomly be assigned to another person.
 
 h2. Installing
 
 <pre syntax="ruby">sudo gem install whotowho</pre>
 
-h3. Requirement
+h3. Requirements
 
- * ActionMailer from Ruby On Rails project : <code syntax="ruby">gem install actionmailer</code>
+ * ActionMailer from the Ruby On Rails project: <code syntax="ruby">gem install actionmailer</code>
 
 h2. Example
 
 <pre syntax="ruby">
-ruby whotowho -m mail-example.txt -s 'a good subject' -f ../data.yaml -c conf.yaml -g
+ruby whotowho -m mail-example.txt -s 'A good subject' -f ../data.yaml -c conf.yaml -g
 </pre>
 
 h3. Example data file
 
-This file defines the list of names and emails. The format of this file is <abbr class="caps">YAML</abbr>. It&#8217;s the serialization of an Array of an Array in Ruby. Here is an example of the format:
+This file defines the list of names and emails. This file is in <abbr class="caps">YAML</abbr>
+and is the serialization of an Array of an Array in Ruby. Here is an example:
 
 <pre syntax="ruby">
 - - name
@@ -63,7 +63,9 @@ This file defines the list of names and emails. The format of this file is <abbr
   - email3
 </pre>
 
-If you want to exclude a person to another you need add an <code>:exclude</code> list after the email, like the following:
+If you want to exclude a person to another you need add an
+<code>:exclude:</code>
+list of names after the email, like the following:
 
 <pre syntax="ruby">
 - - name
@@ -83,43 +85,41 @@ If you want to exclude a person to another you need add an <code>:exclude</code>
   - email6
 </pre>
 
-h3. Example mail configuration file
+h3. Example email configuration file
 
-It's the same as ActionMailer's. But I have added the ability to add the
-"From" field. In order to do so you need to add :from:
+It's the same as ActionMailer's. However I added the ability to add the "From"
+field, which you can add using the symbol <code>:from:</code>.
 
-<pre syntax="ruby">
-:address: Allows you to use a remote mail server. Just change it from its default "localhost" setting.
-:port: On the off chance that your mail server doesn‘t run on port 25, you can change it.
-:domain: If you need to specify a HELO domain, you can do it here.
-:user_name: If your mail server requires authentication, set the username in this setting.
-:password: If your mail server requires authentication, set the password in this setting.
-:authentication: If your mail server requires authentication, you need to specify the authentication type here. This is a symbol and one of :plain, :login, :cram_md5
-:from: Define the email who send all mail in from header
-</pre>
+  * <code>:address:</code> : Allows you to use a remote mail server. Just change it from its default "localhost" setting.
+  * <code>:port:</code> : On the off chance that your mail server doesn‘t run on port 25, you can change it.
+  * <code>:domain:</code> : If you need to specify a HELO domain, you can do it here.
+  * <code>:user_name:</code> : If your mail server requires authentication, set the username in this setting.
+  * <code>:password:</code> : If your mail server requires authentication, set the password in this setting.
+  * <code>:authentication:</code> : If your mail server requires authentication, you need to specify the authentication type here. This is a symbol and one of :plain, :login, :cram_md5
+  * <code>:from:</code> : Define the email who send all mail in from header
 
 h3. Example of email content file
 
 This file is a simple text file. You have two parameters which are changed before the email is sent:
 
- * #{who} : the name of person who receives the email
- * #{towho} : the name of the person assigned
+ * <code>#{who}</code> : the name of person who receives the email
+ * <code>#{towho}</code> : the name of the assigned person
 
 h2. How to submit patches
 
 The trunk repository is <code>http://whotowho.rubyforge.org/svn/trunk</code>
-for anonymous access. You can submit a patch by
-"RubyForge":http://rubyforge.org/tracker/?group_id=4883 or by "my own
-development platform":http://dev.shingara.fr/
+for anonymous access. You can submit a patch on
+"RubyForge":http://rubyforge.org/tracker/?group_id=4883 or on "my own
+development platform":http://dev.shingara.fr/.
 
 h2. Rdoc
 
 You can consult the Rdoc of this project on the "WhoToWho RDoc
-page":http://whotowho.rubyforge.org/rdoc
+page":http://whotowho.rubyforge.org/rdoc.
 
 h2. Thanks
 
-Special Thanks to "Sunny":http://sunfox.org/ to his translation in good english of this page.
+Special thanks to "Sunny":http://sunfox.org/ for his translation in good english of this page.
 
 h2. License
 
