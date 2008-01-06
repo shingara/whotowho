@@ -2,7 +2,6 @@
 
  * 1 major enhancement
    * Add exclude system to assign another person
-
  * 2 minors enhancement
    * The verbose mode is really verbose and when you choose the
      non-verbose mode, it's really non-verbose

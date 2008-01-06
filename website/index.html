@@ -74,16 +74,39 @@ it&#8217;s a total random.</p>
 	<p>Yes, WhoToWho is useless. But What is really usefull?</p>
 
 
+	<h2>Feature</h2>
+
+
+	<ul>
+	<li>Randomize a list and choice one persone for another</li>
+		<li>Send an email who the personne know who is define to it</li>
+		<li>Define the subject and the content of mail with 2 places for define word</li>
+		<li>who and to who</li>
+		<li>Possibility to exclude one or several person for another. With this
+  feature, one person can&#8217;t have another person define.</li>
+	</ul>
+
+
 	<h2>Installing</h2>
 
 
 	<p><pre class='syntax'><span class="ident">sudo</span> <span class="ident">gem</span> <span class="ident">install</span> <span class="ident">whotowho</span></pre></p>
 
 
+	<h3>Requirement</h3>
+
+
+	<ul>
+	<li>ActionMailer from Ruby On Rails project : <code class='syntax'><span class="ident">gem</span> <span class="ident">install</span> <span class="ident">actionmailer</span></code></li>
+	</ul>
+
+
 	<h2>Example of command</h2>
 
 
-	<p>ruby whotowho -m mail-example.txt -s &#8216;a good subject&#8217; -f ../data.yaml -c conf.yaml -g</p>
+	<p><pre class='syntax'>
+<span class="ident">ruby</span> <span class="ident">whotowho</span> <span class="punct">-</span><span class="ident">m</span> <span class="ident">mail</span><span class="punct">-</span><span class="ident">example</span><span class="punct">.</span><span class="ident">txt</span> <span class="punct">-</span><span class="ident">s</span> <span class="punct">'</span><span class="string">a good subject</span><span class="punct">'</span> <span class="punct">-</span><span class="ident">f</span> <span class="punct">../</span><span class="ident">data</span><span class="punct">.</span><span class="ident">yaml</span> <span class="punct">-</span><span class="ident">c</span> <span class="ident">conf</span><span class="punct">.</span><span class="ident">yaml</span> <span class="punct">-</span><span class="ident">g</span>
+</pre></p>
 
 
 	<h3>File data example</h3>
@@ -99,6 +122,28 @@ it&#8217;s a total random.</p>
   <span class="punct">-</span> <span class="ident">email2</span>
 <span class="punct">-</span> <span class="punct">-</span> <span class="ident">name3</span>
   <span class="punct">-</span> <span class="ident">email3</span>
+</pre></p>
+
+
+	<p>If you want define an exclude person to another you need had an Exclude list to the key exclude after email, like following :</p>
+
+
+	<p><pre class='syntax'>
+<span class="punct">-</span> <span class="punct">-</span> <span class="ident">name</span>
+  <span class="punct">-</span> <span class="ident">email</span>
+  <span class="punct">-</span> <span class="symbol">:exclude</span><span class="punct">:</span> <span class="punct">-</span> <span class="ident">name2</span>
+<span class="punct">-</span> <span class="punct">-</span> <span class="ident">name2</span>
+  <span class="punct">-</span> <span class="ident">email2</span>
+  <span class="punct">-</span> <span class="symbol">:exclude</span><span class="punct">:</span> <span class="punct">-</span> <span class="ident">name5</span>
+              <span class="punct">-</span> <span class="ident">name6</span>
+<span class="punct">-</span> <span class="punct">-</span> <span class="ident">name3</span>
+  <span class="punct">-</span> <span class="ident">email3</span>
+<span class="punct">-</span> <span class="punct">-</span> <span class="ident">name4</span>
+  <span class="punct">-</span> <span class="ident">email4</span>
+<span class="punct">-</span> <span class="punct">-</span> <span class="ident">name5</span>
+  <span class="punct">-</span> <span class="ident">email5</span>
+<span class="punct">-</span> <span class="punct">-</span> <span class="ident">name6</span>
+  <span class="punct">-</span> <span class="ident">email6</span>
 </pre></p>
 
 
@@ -134,10 +179,17 @@ it&#8217;s a total random.</p>
 	<h2>How to submit patches</h2>
 
 
-	<p>Read the <a href="http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/">8 steps for fixing other people&#8217;s code</a> and for section <a href="http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/#8b-google-groups">8b: Submit patch to Google Groups</a>, use the Google Group above.</p>
+	<p>The trunk repository is <code>http://whotowho.rubyforge.org/svn/trunk</code>
+for anonymous access. You can submit a patch by
+<a href="http://rubyforge.org/tracker/?group_id=4883">RubyForge</a> or by <a href="http://dev.shingara.fr/">my own
+development platforme</a></p>
 
 
-	<p>The trunk repository is <code>http://whotowho.rubyforge.org/svn/trunk</code> for anonymous access.</p>
+	<h2>Rdoc</h2>
+
+
+	<p>You can consult the Rdoc of this project on the <a href="http://whotowho.rubyforge.org/rdoc">Rdoc of WhoToWho
+page</a></p>
 
 
 	<h2>License</h2>
@@ -151,7 +203,7 @@ it&#8217;s a total random.</p>
 
 	<p>Comments are welcome. Send an email to <a href="mailto:cyril.mougel@gmail.com">Cyril Mougel</a> email</p>
     <p class="coda">
-      <a href="FIXME email">FIXME full name</a>, 20th December 2007<br>
+      <a href="mailto:cyril.mougel@gmail.com">Cyril Mougel</a>, 6th January 2008<br>
       Theme extended from <a href="http://rb2js.rubyforge.org/">Paul Battley</a>
     </p>
 </div>
