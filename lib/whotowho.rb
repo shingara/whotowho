@@ -68,7 +68,7 @@ module WhoToWho
       end
 
       concord_list << [tmp, first]
-      puts "concords : #{tmp} <= #{first"
+      puts "concords : #{tmp} <= #{first}"
 
       if refresh
         @args.refresh
