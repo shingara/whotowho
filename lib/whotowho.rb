@@ -18,8 +18,21 @@ module WhoToWho
       @args = args
     end
 
+    # Static method to made a logger in general of application
+    def self.log
+      @@log ||= Logger.new STDOUT
+    end
+
+    # Say if the logger is in debug level or not
+    # The log is in debug whith -v option
+    def self.logdebug?
+      WhoToWho.log.level == Logger::DEBUG
+    end
+
     def send(list_random)
+      WhoToWho.log.info "Send Mail :"
       list_random.each { |l|
+        WhoToWho.log.info "Send mail to #{l[0].name} (#{l[0].email})"
         SendMail.deliver_send_mail(l[1].name, l[0].email, l[0].name, @args)
       }
     end
@@ -39,7 +52,7 @@ module WhoToWho
         tmp = @args.put_random
       end
       concord_list << [first, tmp]
-      puts "concords : #{first} <= #{tmp}"
+      WhoToWho.log.debug "concords : #{first} <= #{tmp}"
 
       list_mail = []
 
@@ -53,13 +66,13 @@ module WhoToWho
           tmp2 = @args.put_random
           timeout -= 1
           if timeout < 0
-            puts 'timeout'
+            WhoToWho.log.debug 'timeout'
             refresh = true
             break
           end
         end
         concord_list << [tmp, tmp2]
-        puts "concords : #{tmp} <= #{tmp2}"
+        WhoToWho.log.debug "concords : #{tmp} <= #{tmp2}"
         tmp = tmp2
       end
      
@@ -68,7 +81,7 @@ module WhoToWho
       end
 
       concord_list << [tmp, first]
-      puts "concords : #{tmp} <= #{first}"
+      WhoToWho.log.debug "concords : #{tmp} <= #{first}"
 
       if refresh
         @args.refresh
@@ -77,9 +90,10 @@ module WhoToWho
 
 
       concord_list.each { |c|
-        puts "#{c[0]} => #{c[1]}"
+        WhoToWho.log.debug "#{c[0]} => #{c[1]}"
       }
 
+      WhoToWho.log.info "The assignement is define."
       concord_list
 
     end

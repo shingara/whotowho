@@ -13,7 +13,7 @@ module WhoToWho
     end
 
     def exclude=(list_exclude)
-      puts "#{name} has exclude #{list_exclude[:exclude].join(',')}"
+      WhoToWho.log.debug "#{name} has exclude #{list_exclude[:exclude].join(',')}"
       @exclude = list_exclude[:exclude]
     end
 

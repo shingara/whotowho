@@ -5,19 +5,20 @@ module WhoToWho
   # Class for parse Args and save all into
   class ParseArgs
 
-    attr_reader :verbose
     attr_reader :subject
     attr_reader :content
     attr_reader :from
 
     # Parse all argument and check if required is define
     def parse(args, prog)
+      WhoToWho.log.level = Logger::INFO
       options = OptionParser.new do |opts|
         
         opts.banner = "Usage: #{prog} [options]"
         
         opts.on("-v", "--verbose", "Run verbosely") do |v|
-          @verbose = true
+          WhoToWho.log.level = Logger::DEBUG
+          WhoToWho.log.debug "Debug Activate"
         end
         opts.on( '-f', '--file REQUIRED', :REQUIRED, 'File where is all data') do |f|
           load_file f
@@ -66,10 +67,10 @@ module WhoToWho
 
     def refresh
       @list_link = Array.new @list_link_copy
-      puts 'refresh'
+      WhoToWho.log.debug 'refresh'
       @test += 1
       if @test > 3
-        puts 'Sorry this combinaison is hard to randomise'
+        WhoToWho.log.warn 'Sorry this combinaison is hard to randomise, please report your data file in bugtracking http://rubyforge.org/tracker/?group_id=4883'
         exit
       end
     end
@@ -96,7 +97,7 @@ module WhoToWho
 
         # Check if one element exclude all element
         if (l.exclude.class == Array && l.exclude.size >= (@list_link.size - 1))
-          puts "There are several exclude for #{l.name}. You need define less one element possible"
+          WhoToWho.log.warn "There are several exclude for #{l.name}. You need define less one element possible"
           exit
         end
 
@@ -116,7 +117,7 @@ module WhoToWho
         }
 
         if all_exclude
-          puts "One name is exclude by all other element. This element is #{l.name}, you need fixe that"
+          WhoToWho.log.warn "One name is exclude by all other element. This element is #{l.name}, you need fixe that"
           exit
         end
       }
@@ -126,6 +127,7 @@ module WhoToWho
     def load_config(f)
       conf_hash = YAML.load_file f
       ActionMailer::Base.smtp_settings = conf_hash
+      ActionMailer::Base.logger = WhoToWho.log if WhoToWho.logdebug?
       @from = conf_hash[:from]
     end
     
@@ -133,27 +135,27 @@ module WhoToWho
     def test_required
       required = true
       if @subject.nil? || @subject.empty?
-        puts 'you need define a subject'
+        WhoToWho.log.warn 'you need define a subject'
         required = false
       end
 
       if @content.nil? || @content.empty?
-        puts 'you need define a file or a file not empty for you mail template'
+        WhoToWho.log.warn 'you need define a file or a file not empty for you mail template'
         required = false
       end
 
       if @list_link.nil? || @list_link.empty? || @list_link.size < 2
-        puts 'The list of data need define by a file. This file can\'t be empty or only one data'
+        WhoToWho.log.warn 'The list of data need define by a file. This file can\'t be empty or only one data'
         required = false
       end
 
       if ActionMailer::Base.smtp_settings.empty?
-        puts 'The configuration of your SMTP account can\'t be empty'
+        WhoToWho.log.warn 'The configuration of your SMTP account can\'t be empty'
         required = false
       end
 
       if @from.nil? || @from.empty?
-        puts 'You need define a from in your mail settings.'
+        WhoToWho.log.warn 'You need define a from in your mail settings.'
         required = false
       end
 
