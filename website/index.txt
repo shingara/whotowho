@@ -2,7 +2,6 @@ h1. Whotowho
 
 h1. &#x2192; 'How assign one person to another'
 
-
 h2. What
 
 WhoToWho is a simple script to define a name randomly in list of name. And
@@ -29,10 +28,22 @@ it's a total random.
 
 Yes, WhoToWho is useless. But What is really usefull?
 
+h2. Feature
+
+ * Randomize a list and choice one persone for another
+ * Send an email who the personne know who is define to it
+ * Define the subject and the content of mail with 2 places for define word
+ * who and to who
+ * Possibility to exclude one or several person for another. With this
+   feature, one person can't have another person define.
+
 h2. Installing
 
 <pre syntax="ruby">sudo gem install whotowho</pre>
 
+h3. Requirement
+
+ * ActionMailer from Ruby On Rails project : <code syntax="ruby">gem install actionmailer</code>
 
 h2. Example of command
 
@@ -51,6 +62,26 @@ This file define the list of name and email. The format of this file is YAML. It
   - email2
 - - name3
   - email3
+</pre>
+
+If you want define an exclude person to another you need had an Exclude list to the key exclude after email, like following :
+
+<pre syntax="ruby">
+- - name
+  - email
+  - :exclude: - name2
+- - name2
+  - email2
+  - :exclude: - name5
+              - name6
+- - name3
+  - email3
+- - name4
+  - email4
+- - name5
+  - email5
+- - name6
+  - email6
 </pre>
 
 h3. File of mail configuration

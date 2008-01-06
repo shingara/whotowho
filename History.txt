@@ -1,3 +1,13 @@
+== 0.2.0 / 2008-01-06
+
+ * 1 major enhancement
+   * Add exclude system to assign another person
+
+ * 2 minors enhancement
+   * The verbose mode is really verbose and when you choose the
+     non-verbose mode, it's really non-verbose
+   * Changement of Licence to GPL to MIT
+
 == 0.1.0 / 2007-11-16
 
 * 1 major enhancement
