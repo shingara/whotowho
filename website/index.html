@@ -35,55 +35,54 @@
       <p>Get Version</p>
       <a href="http://rubyforge.org/projects/whotowho" class="numbers">0.2.0</a>
     </div>
-    <h1>&#x2192; &#8216;How assign one person to another&#8217;</h1>
+    <h1>&#x2192; &#8216;How to assign one person to another&#8217;</h1>
 
 
 	<h2>What</h2>
 
 
-	<p>WhoToWho is a simple script to define a name randomly in list of name. And
-send this name by email. With WhoToWho you can define several thing:</p>
+	<p>WhoToWho is a simple script to find a random name in a list and
+send this name by email. With WhoToWho you can define several things:</p>
 
 
 	<ul>
-	<li>Subject of Mail</li>
-		<li>Format of Mail with 2 parameters (who and towho)</li>
-		<li>The configuration of smtp connection</li>
-		<li>Add options for <span class="caps">SSL</span> if your smtp connection is a Gmail account</li>
+	<li>Mail subject</li>
+		<li>Mail format with 2 parameters (who and towho)</li>
+		<li><span class="caps">SMTP</span> configuration</li>
+		<li><span class="caps">SSL</span> option if your <span class="caps">SMTP</span> connection is a Gmail account</li>
 	</ul>
 
 
 	<h2>History</h2>
 
 
-	<p>WhoToWho made in first for my friend group. For Christmas, we decide to
-group us and we offer one present for only one other personne. The price is
-define in first for this present.</p>
+	<p>WhoToWho was first made for my group of friends. For Christmas, we decided to
+group up and offer one present for one and only one other person. The present&#8217;s price is
+defined at the stort.</p>
 
 
-	<p>Before WhoToWho, we made a group before the Christmas night and we made a
-random choice of who must offer to who. The choice is made with little paper
+	<p>Before WhoToWho, we made a group before the Christmas eve and made the
+random choice of who must offer to who with a little paper
 in hat.</p>
 
 
-	<p>Now we are in different place and we can&#8217;t see every week. So, like we have
-all an email, I created WhoToWho. So I can&#8217;t know who must be offer to who and
-it&#8217;s a total random.</p>
+	<p>Now we live in different places and we can&#8217;t see each other every week. So, as we all
+have an email account, I created WhoToWho. This way nobody knows who must offer to who and the choice is totally random.</p>
 
 
-	<p>Yes, WhoToWho is useless. But What is really usefull?</p>
+	<p>Yes, WhoToWho is useless. But what is really useful anyway?</p>
 
 
-	<h2>Feature</h2>
+	<h2>Features</h2>
 
 
 	<ul>
-	<li>Randomize a list and choice one persone for another</li>
-		<li>Send an email who the personne know who is define to it</li>
-		<li>Define the subject and the content of mail with 2 places for define word</li>
+	<li>Randomize a list and choose one person for another</li>
+		<li>Send an email to each person to know to whom he or she is assigned</li>
+		<li>Define the subject and the contents of the email with 2 parameters (who and to who)</li>
 		<li>who and to who</li>
-		<li>Possibility to exclude one or several person for another. With this
-  feature, one person can&#8217;t have another person define.</li>
+		<li>You may exclude one or several persons for another. With this
+  feature, one person can&#8217;t have another defined person.</li>
 	</ul>
 
 
@@ -101,7 +100,7 @@ it&#8217;s a total random.</p>
 	</ul>
 
 
-	<h2>Example of command</h2>
+	<h2>Example</h2>
 
 
 	<p><pre class='syntax'>
@@ -109,10 +108,10 @@ it&#8217;s a total random.</p>
 </pre></p>
 
 
-	<h3>File data example</h3>
+	<h3>Example data file</h3>
 
 
-	<p>This file define the list of name and email. The format of this file is <span class="caps">YAML</span>. It&#8217;s the serialization of an Array of an Array in Ruby. A example of format is :</p>
+	<p>This file defines the list of names and emails. The format of this file is <abbr class="caps"><span class="caps">YAML</span></abbr>. It&#8217;s the serialization of an Array of an Array in Ruby. Here is an example of the format:</p>
 
 
 	<p><pre class='syntax'>
@@ -125,7 +124,7 @@ it&#8217;s a total random.</p>
 </pre></p>
 
 
-	<p>If you want define an exclude person to another you need had an Exclude list to the key exclude after email, like following :</p>
+	<p>If you want to exclude a person to another you need add an <code>:exclude</code> list after the email, like the following:</p>
 
 
 	<p><pre class='syntax'>
@@ -147,10 +146,11 @@ it&#8217;s a total random.</p>
 </pre></p>
 
 
-	<h3>File of mail configuration</h3>
+	<h3>Example mail configuration file</h3>
 
 
-	<p>It&#8217;s the same of actionmailer. But I have add a configuration of from. You need had :from:</p>
+	<p>It&#8217;s the same as ActionMailer&#8217;s. But I have added the ability to add the
+&#8220;From&#8221; field. In order to do so you need to add :from:</p>
 
 
 	<p><pre class='syntax'>
@@ -164,15 +164,15 @@ it&#8217;s a total random.</p>
 </pre></p>
 
 
-	<h3>File of mail content</h3>
+	<h3>Example of email content file</h3>
 
 
-	<p>This file is a simple text file. You have two patterns who change before the send.</p>
+	<p>This file is a simple text file. You have two parameters which are changed before the email is sent:</p>
 
 
 	<ul>
-	<li>#{who} : it&#8217;s the name of person who receiv the mail</li>
-		<li>#{towho} : the name of person assign to personne who receiv this mail</li>
+	<li>#{who} : the name of person who receives the email</li>
+		<li>#{towho} : the name of the person assigned</li>
 	</ul>
 
 
@@ -182,14 +182,20 @@ it&#8217;s a total random.</p>
 	<p>The trunk repository is <code>http://whotowho.rubyforge.org/svn/trunk</code>
 for anonymous access. You can submit a patch by
 <a href="http://rubyforge.org/tracker/?group_id=4883">RubyForge</a> or by <a href="http://dev.shingara.fr/">my own
-development platforme</a></p>
+development platform</a></p>
 
 
 	<h2>Rdoc</h2>
 
 
-	<p>You can consult the Rdoc of this project on the <a href="http://whotowho.rubyforge.org/rdoc">Rdoc of WhoToWho
+	<p>You can consult the Rdoc of this project on the <a href="http://whotowho.rubyforge.org/rdoc">WhoToWho RDoc
 page</a></p>
+
+
+	<h2>Thanks</h2>
+
+
+	<p>Special Thanks to <a href="http://sunfox.org/">Sunny</a> to his translation in good english of this page.</p>
 
 
 	<h2>License</h2>
@@ -201,7 +207,7 @@ page</a></p>
 	<h2>Contact</h2>
 
 
-	<p>Comments are welcome. Send an email to <a href="mailto:cyril.mougel@gmail.com">Cyril Mougel</a> email</p>
+	<p>Comments are welcome. Send an email to <a href="mailto:cyril.mougel@gmail.com">Cyril Mougel</a></p>
     <p class="coda">
       <a href="mailto:cyril.mougel@gmail.com">Cyril Mougel</a>, 6th January 2008<br>
       Theme extended from <a href="http://rb2js.rubyforge.org/">Paul Battley</a>

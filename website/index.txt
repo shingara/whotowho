@@ -1,41 +1,40 @@
 h1. Whotowho
 
-h1. &#x2192; 'How assign one person to another'
+h1. &#x2192; 'How to assign one person to another'
 
 h2. What
 
-WhoToWho is a simple script to define a name randomly in list of name. And
-send this name by email. With WhoToWho you can define several thing:
+WhoToWho is a simple script to find a random name in a list and
+send this name by email. With WhoToWho you can define several things:
 
- * Subject of Mail
- * Format of Mail with 2 parameters (who and towho)
- * The configuration of smtp connection
- * Add options for SSL if your smtp connection is a Gmail account
+ * Mail subject
+ * Mail format with 2 parameters (who and towho)
+ * SMTP configuration
+ * SSL option if your SMTP connection is a Gmail account
 
 h2. History
 
-WhoToWho made in first for my friend group. For Christmas, we decide to
-group us and we offer one present for only one other personne. The price is
-define in first for this present.
+WhoToWho was first made for my group of friends. For Christmas, we decided to
+group up and offer one present for one and only one other person. The present's price is
+defined at the stort.
 
-Before WhoToWho, we made a group before the Christmas night and we made a
-random choice of who must offer to who. The choice is made with little paper
+Before WhoToWho, we made a group before the Christmas eve and made the
+random choice of who must offer to who with a little paper
 in hat.
 
-Now we are in different place and we can't see every week. So, like we have
-all an email, I created WhoToWho. So I can't know who must be offer to who and
-it's a total random.
+Now we live in different places and we can&#8217;t see each other every week. So, as we all
+have an email account, I created WhoToWho. This way nobody knows who must offer to who and the choice is totally random.
 
-Yes, WhoToWho is useless. But What is really usefull?
+Yes, WhoToWho is useless. But what is really useful anyway?
 
-h2. Feature
+h2. Features
 
- * Randomize a list and choice one persone for another
- * Send an email who the personne know who is define to it
- * Define the subject and the content of mail with 2 places for define word
+ * Randomize a list and choose one person for another
+ * Send an email to each person to know to whom he or she is assigned
+ * Define the subject and the contents of the email with 2 parameters (who and to who)
  * who and to who
- * Possibility to exclude one or several person for another. With this
-   feature, one person can't have another person define.
+ * You may exclude one or several persons for another. With this
+   feature, one person can't have another defined person.
 
 h2. Installing
 
@@ -45,15 +44,15 @@ h3. Requirement
 
  * ActionMailer from Ruby On Rails project : <code syntax="ruby">gem install actionmailer</code>
 
-h2. Example of command
+h2. Example
 
 <pre syntax="ruby">
 ruby whotowho -m mail-example.txt -s 'a good subject' -f ../data.yaml -c conf.yaml -g
 </pre>
 
-h3. File data example
+h3. Example data file
 
-This file define the list of name and email. The format of this file is YAML. It's the serialization of an Array of an Array in Ruby. A example of format is :
+This file defines the list of names and emails. The format of this file is <abbr class="caps">YAML</abbr>. It&#8217;s the serialization of an Array of an Array in Ruby. Here is an example of the format:
 
 <pre syntax="ruby">
 - - name
@@ -64,7 +63,7 @@ This file define the list of name and email. The format of this file is YAML. It
   - email3
 </pre>
 
-If you want define an exclude person to another you need had an Exclude list to the key exclude after email, like following :
+If you want to exclude a person to another you need add an <code>:exclude</code> list after the email, like the following:
 
 <pre syntax="ruby">
 - - name
@@ -84,9 +83,10 @@ If you want define an exclude person to another you need had an Exclude list to 
   - email6
 </pre>
 
-h3. File of mail configuration
+h3. Example mail configuration file
 
-It's the same of actionmailer. But I have add a configuration of from. You need had :from:
+It's the same as ActionMailer's. But I have added the ability to add the
+"From" field. In order to do so you need to add :from:
 
 <pre syntax="ruby">
 :address: Allows you to use a remote mail server. Just change it from its default "localhost" setting.
@@ -98,24 +98,28 @@ It's the same of actionmailer. But I have add a configuration of from. You need 
 :from: Define the email who send all mail in from header
 </pre>
 
-h3. File of mail content
+h3. Example of email content file
 
-This file is a simple text file. You have two patterns who change before the send.
+This file is a simple text file. You have two parameters which are changed before the email is sent:
 
- * #{who} : it's the name of person who receiv the mail
- * #{towho} : the name of person assign to personne who receiv this mail
+ * #{who} : the name of person who receives the email
+ * #{towho} : the name of the person assigned
 
 h2. How to submit patches
 
 The trunk repository is <code>http://whotowho.rubyforge.org/svn/trunk</code>
 for anonymous access. You can submit a patch by
 "RubyForge":http://rubyforge.org/tracker/?group_id=4883 or by "my own
-development platforme":http://dev.shingara.fr/
+development platform":http://dev.shingara.fr/
 
 h2. Rdoc
 
-You can consult the Rdoc of this project on the "Rdoc of WhoToWho
+You can consult the Rdoc of this project on the "WhoToWho RDoc
 page":http://whotowho.rubyforge.org/rdoc
+
+h2. Thanks
+
+Special Thanks to "Sunny":http://sunfox.org/ to his translation in good english of this page.
 
 h2. License
 
@@ -123,4 +127,4 @@ This code is free to use under the terms of the MIT license.
 
 h2. Contact
 
-Comments are welcome. Send an email to "Cyril Mougel":mailto:cyril.mougel@gmail.com email
+Comments are welcome. Send an email to "Cyril Mougel":mailto:cyril.mougel@gmail.com
